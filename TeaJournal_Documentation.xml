@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TeaJournal</name>
+    </assembly>
+    <members>
+        <member name="M:TeaJournal.DataInitializer.#ctor">
+            Read in saved teas for initial list
+        </member>
+        <member name="M:TeaJournal.Infrastructure.TeaList.PopulateTeaList">
+            <summary>
+            Initialize our <see cref="F:TeaJournal.Infrastructure.TeaList.teaList"/> with empty <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:TeaJournal.Tea"/>s,
+            one for each <see cref="T:TeaJournal.Tea.teaType"/>.
+            </summary>
+        </member>
+        <member name="M:TeaJournal.Infrastructure.TeaList.AddTea(TeaJournal.Tea)">
+            <summary>
+            Adds a given <see cref="T:TeaJournal.Tea"/> to the <see cref="F:TeaJournal.Infrastructure.TeaList.teaList"/>, with the index based on
+            the <see cref="T:TeaJournal.Tea.teaType"/> enum.
+            </summary>
+            <param name="tea">The <see cref="T:TeaJournal.Tea"/> to be added.</param>
+            <returns>True if the <see cref="T:TeaJournal.Tea"/> was added, False if the <see cref="T:TeaJournal.Tea"/> already exists.</returns>
+        </member>
+        <member name="M:TeaJournal.Infrastructure.TeaList.AlreadyExists(TeaJournal.Tea,System.Int32)">
+            <summary>
+            Finds whether the <see cref="T:TeaJournal.Tea"/> already exists in our <see cref="F:TeaJournal.Infrastructure.TeaList.teaList"/>
+            </summary>
+            <param name="tea"></param>
+            <param name="typeIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TeaJournal.Infrastructure.TeaList.FindTea(System.String)">
+            <summary>
+            Finds if a <see cref="T:TeaJournal.Tea"/> with name <see cref="P:TeaJournal.Tea.name"/> exists.
+            </summary>
+            <param name="teaName">The name to search for.</param>
+            <returns>True if a <see cref="T:TeaJournal.Tea"/> is found, False if not.</returns>
+        </member>
+        <member name="M:TeaJournal.Infrastructure.TeaList.DeleteTea(TeaJournal.Tea)">
+            <summary>
+            Deletes a given <see cref="T:TeaJournal.Tea"/> from the <see cref="F:TeaJournal.Infrastructure.TeaList.teaList"/> if it exists.
+            </summary>
+            <param name="tea">The <see cref="T:TeaJournal.Tea"/> to remove.</param>
+            <returns>True if the <see cref="T:TeaJournal.Tea"/> is found and deleted, False if not.</returns>
+        </member>
+        <member name="M:TeaJournal.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:TeaJournal.MainForm.SaveCurrentTea(TeaJournal.Tea)">
+            Updates the info of our currently selected tea
+        </member>
+        <member name="M:TeaJournal.MainForm.ClearTea">
+            Clears out the form text boxes to default values
+        </member>
+        <member name="M:TeaJournal.MainForm.TeaList_SelectedIndexChanged(System.Object,System.EventArgs)">
+            Updates tea form when a new tea is selected from our Tea List
+        </member>
+        <member name="M:TeaJournal.MainForm.TeaType_Changed(System.Object,System.EventArgs)">
+            Changes current tea type category to the newly selected one
+            Updates our current tea list with every tea of that type and adds it to the tea list
+        </member>
+        <member name="M:TeaJournal.MainForm.MainForm_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            Called when the form closes, saves our tea information for the next session
+            TODO: Saving needs to be implemented still
+        </member>
+        <member name="F:TeaJournal.MainForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TeaJournal.MainForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TeaJournal.MainForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
