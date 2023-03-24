@@ -12,6 +12,7 @@ namespace TeaJournal.Infrastructure
         private List<List<Tea>> teaList;
         public TeaList()
         {
+            teaList = new List<List<Tea>>();
             PopulateTeaList();
         }
         /// <summary>

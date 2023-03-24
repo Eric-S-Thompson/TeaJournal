@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\ProgrammingProjects\C#\TeaJournal2\TeaJournal\TeaJournal\TeaJournal_Documentation.xml</DocumentationFile>
+    <DocumentationFile>D:\ProgrammingProjects\C#\TeaJournal\TeaJournal\TeaJournal_Documentation.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
