@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaJournal", "TeaJournal\TeaJournal.csproj", "{A338B843-6736-43A8-9327-7389670B57FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A338B843-6736-43A8-9327-7389670B57FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A338B843-6736-43A8-9327-7389670B57FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A338B843-6736-43A8-9327-7389670B57FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A338B843-6736-43A8-9327-7389670B57FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D68E6E9D-75C8-4B16-9DDA-B1C81560CD72}
+	EndGlobalSection
+EndGlobal
