@@ -13,6 +13,9 @@ using TeaJournal.Infrastructure;
 
 namespace TeaJournal
 {
+    /**
+     * TODO: XML implementation, current teaList is unneeded.
+     */
     class DataInitializer
     {
         public List<Tea> teaList = new List<Tea>();

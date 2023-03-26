@@ -4,6 +4,9 @@
         <name>TeaJournal</name>
     </assembly>
     <members>
+        <member name="T:TeaJournal.DataInitializer">
+            TODO: XML implementation, current teaList is unneeded.
+        </member>
         <member name="M:TeaJournal.DataInitializer.#ctor">
             Read in saved teas for initial list
         </member>

@@ -25,6 +25,14 @@ namespace TeaJournal.Infrastructure
             {
                 Debug.WriteLine(i);
                 teaList.Insert(i, new List<Tea>());
+
+                //TEMP Initial Values
+                String name = ((Tea.teaType)i).ToString();
+                Tea tempTea = new Tea((Tea.teaType) i, name+"1", "Test 1 Instructions", "Test notes");
+                Tea tempTea2 = new Tea((Tea.teaType)i, name+"2", "Test 2 Instructions", "Test notes");
+
+                teaList[i].Add(tempTea);
+                teaList[i].Add(tempTea2);
             }
         }
         /// <summary>
@@ -35,12 +43,16 @@ namespace TeaJournal.Infrastructure
         /// <returns>True if the <see cref="Tea"/> was added, False if the <see cref="Tea"/> already exists.</returns>
         public bool AddTea(Tea tea)
         {
-            int type = (int) tea.type;
-            if (AlreadyExists(tea, type))
+            int type = getTypeInt(tea);
+            if (AlreadyExists(tea, type) || teaList.Capacity < type)
             {
                 Debug.WriteLine("TeaList.cs: AddTea: Tea exists already in teaList!");
                 return false;
             }
+            teaList[type].Add(tea);
+            teaList[type] = teaList[type].OrderBy(t => t.name).ToList();
+            Debug.WriteLine("Tealist.cs: AddTea: List so far: \n");
+            Debug.WriteLine(String.Join(", ", teaList[type]));
             return true;
         }
         /// <summary>
@@ -76,7 +88,32 @@ namespace TeaJournal.Infrastructure
         /// <returns>True if the <see cref="Tea"/> is found and deleted, False if not.</returns>
         public bool DeleteTea(Tea tea)
         {
-            return false;
+            int typeIndex = getTypeInt(tea);
+            return teaList[typeIndex].Remove(tea);
+            /**
+            foreach (Tea t in teaList[typeIndex])
+            {
+                if (tea.Equals(t))
+                {
+                    teaList[typeIndex].Remove(tea);
+                    return true;
+                }
+            }
+            return false;**/
+        }
+
+        public List<Tea> GetTeaOfType(Tea.teaType type)
+        {
+            return teaList[getTypeInt(type)];
+        }
+
+        private int getTypeInt(Tea tea)
+        {
+            return (int) tea.type;
+        }
+        private int getTypeInt(Tea.teaType type)
+        {
+            return (int) type;
         }
     }
 }

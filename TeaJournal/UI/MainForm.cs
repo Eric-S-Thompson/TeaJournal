@@ -14,12 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeaJournal.Infrastructure;
 
 namespace TeaJournal
 {
     public partial class MainForm : Form
     {
         DataInitializer initialize; // Populate and hold our tea list
+        Infrastructure.TeaList allTeas;
         List<Tea> currentTeas;      // Stores all teas of currently selected type
         Tea currentTea;             // Currently selected tea
         public MainForm()
@@ -30,7 +32,9 @@ namespace TeaJournal
             initialize = new DataInitializer();
             initialize.Start();
 
-            currentTeas = initialize.teaList;
+            allTeas = new TeaList();
+            currentTeas = allTeas.GetTeaOfType(Tea.teaType.Black);
+            //currentTeas = initialize.teaList;
 
             // Clear out the forms (possibly unneeded)
             ClearTea();
@@ -109,6 +113,7 @@ namespace TeaJournal
          */
         private void TeaList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Debug.WriteLine("MainForm.cs : TeaList_SelectedIndexChanged");
             // User has selected a null space
             if (TeaList.SelectedItem is null)
             {
@@ -144,6 +149,18 @@ namespace TeaJournal
          */
         private void TeaType_Changed(object sender, EventArgs e)
         {
+            String selected = TeaTypes.SelectedItem.ToString();
+            Tea.teaType type = (Tea.teaType) Enum.Parse(typeof(Tea.teaType), selected, true);
+            List<Tea> newTeas = allTeas.GetTeaOfType(type);
+
+            TeaList.Items.Clear();
+            //TeaList.SelectedItems.Remove(TeaList.SelectedItems[0]); // Deselect listbox
+            foreach (Tea t in newTeas)
+            {
+                TeaList.Items.Add(t.name);
+            }
+            currentTeas = newTeas;
+            /**
             TeaList.Items.Clear();
             List<Tea> newTeas = new List<Tea>();
             foreach (Tea t in initialize.teaList)
@@ -154,7 +171,7 @@ namespace TeaJournal
                     TeaList.Items.Add(t.name);
                 }
             }
-            currentTeas = newTeas;
+            currentTeas = newTeas;**/
         }
 
         private void ExtraNotes_TextChanged(object sender, EventArgs e)
