@@ -40,11 +40,13 @@ namespace TeaJournal
             this.FirstTab = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.addTea = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.addTea);
             this.panel1.Controls.Add(this.TeaBrewTime);
             this.panel1.Controls.Add(this.TeaBrewNotes);
             this.panel1.Controls.Add(this.TeaBrewingName);
@@ -154,6 +156,7 @@ namespace TeaJournal
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -163,6 +166,16 @@ namespace TeaJournal
             this.button3.TabIndex = 3;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // addTea
+            // 
+            this.addTea.Location = new System.Drawing.Point(224, -1);
+            this.addTea.Name = "addTea";
+            this.addTea.Size = new System.Drawing.Size(94, 29);
+            this.addTea.TabIndex = 8;
+            this.addTea.Text = "Add";
+            this.addTea.UseVisualStyleBackColor = true;
+            this.addTea.Click += new System.EventHandler(this.addTea_Click);
             // 
             // MainForm
             // 
@@ -194,6 +207,7 @@ namespace TeaJournal
         private System.Windows.Forms.RichTextBox TeaName;
         private System.Windows.Forms.RichTextBox TeaBrewNotes;
         private System.Windows.Forms.DateTimePicker TeaBrewTime;
+        private System.Windows.Forms.Button addTea;
     }
 }
 

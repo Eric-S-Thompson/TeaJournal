@@ -174,6 +174,21 @@ namespace TeaJournal
             currentTeas = newTeas;**/
         }
 
+        private void addTea_Click(object sender, EventArgs e)
+        {
+            //Debug.WriteLine(TeaTypes.SelectedItem.ToString());
+            if (TeaTypes.SelectedItem is null)
+            {
+                TeaTypes.SelectedIndex = 0;
+            }
+            Tea.teaType newType = Tea.stringToEnum(TeaTypes.SelectedIndex.ToString());
+            Tea newTea = new Tea(newType, "New Tea", "Instructions", "Notes");
+            //TeaList.Items.Add(newTea.name);
+            allTeas.AddTea(newTea);
+            TeaList.Items.Add(newTea.name);
+            currentTeas.Add(newTea);
+        }
+
         private void ExtraNotes_TextChanged(object sender, EventArgs e)
         {
 
@@ -191,6 +206,11 @@ namespace TeaJournal
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Debug.WriteLine("Form closing.");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

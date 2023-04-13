@@ -55,5 +55,18 @@ namespace TeaJournal
             }
             return equal;
         }
+
+        public static teaType stringToEnum(string s)
+        {
+            teaType newType;
+            if (Enum.TryParse<teaType>(s, out newType))
+            {
+                return newType;
+            }
+            else
+            {
+                return teaType.Black; // Default
+            }
+        }
     }
 }
