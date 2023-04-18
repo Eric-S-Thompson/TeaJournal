@@ -4,11 +4,30 @@
         <name>TeaJournal</name>
     </assembly>
     <members>
-        <member name="T:TeaJournal.DataInitializer">
-            TODO: XML implementation, current teaList is unneeded.
+        <member name="T:TeaJournal.DatabaseManager`1">
+            TODO: SQLite implementation, read/write/update/search
         </member>
-        <member name="M:TeaJournal.DataInitializer.#ctor">
-            Read in saved teas for initial list
+        <member name="M:TeaJournal.DatabaseManager`1.#ctor(System.String)">
+            <summary>
+            Creates initial database (if it does not exist already) and adds tables
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TeaJournal.DatabaseManager`1.FindData(System.Int32)">
+            <summary>
+            Searches database by id and returns an object of generic type.
+            </summary>
+            <param name="id"> The ID of the database entry to find.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TeaJournal.DatabaseManager`1.InitializeDatabase(SQLite.SQLiteConnection,System.String,System.Type[])">
+            <summary>
+            Adds table(s) to a given database. Creates a new database if it does not exist already.
+            </summary>
+            <param name="db"> The database to create tables for.</param>
+            <param name="dbName"> The name of our database. </param>
+            <param name="tables"> List of types of tables to create. </param>
+            <returns></returns>
         </member>
         <member name="M:TeaJournal.Infrastructure.TeaList.PopulateTeaList">
             <summary>

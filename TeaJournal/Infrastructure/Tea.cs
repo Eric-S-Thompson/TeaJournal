@@ -3,6 +3,7 @@
  *          (name, type, brewing time, brewing temp, notes, etc.)
  * 
  */
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace TeaJournal
 {
+    [Table("Teas")]
     class Tea
     {
         public enum teaType
@@ -22,12 +24,25 @@ namespace TeaJournal
             Oolong,
             Other
         }
+        #region properties
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
         public teaType type { get; set; }
         public string name { get; set; }
         public DateTime brewTime { get; set; }
         public string otherInstructions { get; set; }
         public string notes { get; set; }
+        #endregion
 
+        public Tea()
+        {
+            this.type = teaType.Black;
+            this.name = "Default Name";
+            DateTime date = new DateTime(2001, 1, 1, 1, 0, 0);
+            this.brewTime = date;
+            this.otherInstructions = "Default other instructions";
+            this.notes = "Default notes";
+        }
         public Tea(teaType type, string name, string instructions, string notes)
         {
             this.type = type;

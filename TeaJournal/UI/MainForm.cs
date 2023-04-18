@@ -20,7 +20,7 @@ namespace TeaJournal
 {
     public partial class MainForm : Form
     {
-        DataInitializer initialize; // Populate and hold our tea list
+        DatabaseManager<Tea> initialize; // Populate and hold our tea list
         Infrastructure.TeaList allTeas;
         List<Tea> currentTeas;      // Stores all teas of currently selected type
         Tea currentTea;             // Currently selected tea
@@ -28,9 +28,8 @@ namespace TeaJournal
         {
             InitializeComponent();
 
-            // Start reading in tea data
-            initialize = new DataInitializer();
-            initialize.Start();
+            // Create our tea database
+            initialize = new DatabaseManager<Tea>("teas");
 
             allTeas = new TeaList();
             currentTeas = allTeas.GetTeaOfType(Tea.teaType.Black);
