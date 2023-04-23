@@ -31,6 +31,15 @@ namespace TeaJournal
             // Create our tea database
             initialize = new DatabaseManager<Tea>("teas");
 
+            // TEMP: Testing database search functionality
+            //Func<Tea, bool> test = Tea => Tea.type == Tea.teaType.Black;
+            List<Tea> allFound = initialize.FindAllData(Tea => Tea.type == Tea.teaType.Black);
+            foreach (Tea t in allFound)
+            {
+                Debug.WriteLine("FOUND TEA USING DATABASE: " + t.name); 
+            }
+            // END TEMP
+
             allTeas = new TeaList();
             currentTeas = allTeas.GetTeaOfType(Tea.teaType.Black);
             //currentTeas = initialize.teaList;

@@ -11,7 +11,7 @@
             <summary>
             Creates initial database (if it does not exist already) and adds tables
             </summary>
-            <param name="name"></param>
+            <param name="name"> The database name. </param>
         </member>
         <member name="M:TeaJournal.DatabaseManager`1.FindData(System.Int32)">
             <summary>

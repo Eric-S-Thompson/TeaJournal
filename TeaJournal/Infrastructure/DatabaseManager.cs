@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TeaJournal.Infrastructure;
@@ -34,8 +35,8 @@ namespace TeaJournal
             this.name = name;
             Debug.WriteLine("DIRECTORY: " + directory);
             database = InitializeDatabase(database, name, typeof(T));
-            database.Insert(new Tea(Tea.teaType.Green, "Gyokuru", "Extra instructions", "Extra notes"));
-            database.Insert(new Tea(Tea.teaType.Black, "Earl Grey", "Earl Grey instructions", "Earl Grey notes"));
+            //database.Insert(new Tea(Tea.teaType.Green, "Gyokuru", "Extra instructions", "Extra notes"));
+            //database.Insert(new Tea(Tea.teaType.Black, "Earl Grey", "Earl Grey instructions", "Earl Grey notes"));
         }
 
         /// <summary>
@@ -46,6 +47,22 @@ namespace TeaJournal
         public T FindData(int id)
         {
             return database.Find<T>(id);
+        }
+
+        /// <summary>
+        /// Searches database using a query to find multiple entries.
+        /// </summary>
+        /// <param name="query"> <see cref="Expression"/> to be used as a query on the database.</param>
+        /// <returns><see cref="List{T}"/> of found entries in the database.</returns>
+        public List<T> FindAllData(Expression<Func<T, bool>> query)
+        {
+            List<T> found = new List<T>();
+            TableQuery<T> entries = database.Table<T>().Where(query);
+            foreach (T item in entries)
+            {
+                found.Add(item);
+            }
+            return found;
         }
 
         /// <summary>
