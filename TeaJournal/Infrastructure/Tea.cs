@@ -6,6 +6,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,7 @@ namespace TeaJournal
         public static teaType stringToEnum(string s)
         {
             teaType newType;
+            Debug.Write("Tea.stringToEnum " + s);
             if (Enum.TryParse<teaType>(s, out newType))
             {
                 return newType;
@@ -82,6 +84,11 @@ namespace TeaJournal
             {
                 return teaType.Black; // Default
             }
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
     }
 }

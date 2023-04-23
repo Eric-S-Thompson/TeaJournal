@@ -20,7 +20,7 @@ namespace TeaJournal
 {
     public partial class MainForm : Form
     {
-        DatabaseManager<Tea> initialize; // Populate and hold our tea list
+        DatabaseManager<Tea> dataHandler; // Populate and hold our tea list
         Infrastructure.TeaList allTeas;
         List<Tea> currentTeas;      // Stores all teas of currently selected type
         Tea currentTea;             // Currently selected tea
@@ -29,19 +29,20 @@ namespace TeaJournal
             InitializeComponent();
 
             // Create our tea database
-            initialize = new DatabaseManager<Tea>("teas");
+            dataHandler = new DatabaseManager<Tea>("teas");
 
             // TEMP: Testing database search functionality
             //Func<Tea, bool> test = Tea => Tea.type == Tea.teaType.Black;
-            List<Tea> allFound = initialize.FindAllData(Tea => Tea.type == Tea.teaType.Black);
-            foreach (Tea t in allFound)
+            currentTeas = dataHandler.FindAllData(Tea => Tea.type == Tea.teaType.Black);
+            foreach (Tea t in currentTeas)
             {
                 Debug.WriteLine("FOUND TEA USING DATABASE: " + t.name); 
             }
+            Debug.WriteLine("SINGLE TEA: " + dataHandler.FindData(1).name);
             // END TEMP
 
-            allTeas = new TeaList();
-            currentTeas = allTeas.GetTeaOfType(Tea.teaType.Black);
+            //allTeas = new TeaList();
+            //currentTeas = allTeas.GetTeaOfType(Tea.teaType.Black);
             //currentTeas = initialize.teaList;
 
             // Clear out the forms (possibly unneeded)
@@ -84,6 +85,7 @@ namespace TeaJournal
             tea.brewTime = TeaBrewTime.Value;
             tea.otherInstructions = TeaBrewNotes.Text;
             tea.notes = TeaNotes.Text;
+            dataHandler.UpdateData(tea);
         }
 
         /**
@@ -131,7 +133,12 @@ namespace TeaJournal
             // Save our current tea (if selection is valid)
             if (currentTea is not null)
             {
+                int previousTeaIndex = TeaList.Items.IndexOf(currentTea);
                 SaveCurrentTea(currentTea);
+                if(previousTeaIndex != -1) // If a different tea type was selected the index won't be valid
+                {
+                    TeaList.Items[previousTeaIndex] = currentTea;
+                }
             }
             string item = TeaList.SelectedItem.ToString(); // Stores selected tea name
             bool foundItem = false;
@@ -159,27 +166,14 @@ namespace TeaJournal
         {
             String selected = TeaTypes.SelectedItem.ToString();
             Tea.teaType type = (Tea.teaType) Enum.Parse(typeof(Tea.teaType), selected, true);
-            List<Tea> newTeas = allTeas.GetTeaOfType(type);
+            List<Tea> newTeas = dataHandler.FindAllData(Tea => Tea.type == type);
 
             TeaList.Items.Clear();
-            //TeaList.SelectedItems.Remove(TeaList.SelectedItems[0]); // Deselect listbox
             foreach (Tea t in newTeas)
             {
-                TeaList.Items.Add(t.name);
+                TeaList.Items.Add(t);
             }
             currentTeas = newTeas;
-            /**
-            TeaList.Items.Clear();
-            List<Tea> newTeas = new List<Tea>();
-            foreach (Tea t in initialize.teaList)
-            {
-                if (TeaTypes.SelectedItem.ToString() == t.type.ToString())
-                {
-                    newTeas.Add(t);
-                    TeaList.Items.Add(t.name);
-                }
-            }
-            currentTeas = newTeas;**/
         }
 
         private void addTea_Click(object sender, EventArgs e)
@@ -189,11 +183,14 @@ namespace TeaJournal
             {
                 TeaTypes.SelectedIndex = 0;
             }
-            Tea.teaType newType = Tea.stringToEnum(TeaTypes.SelectedIndex.ToString());
+            //Tea.teaType newType = Tea.stringToEnum(TeaTypes.SelectedIndex.ToString());
+            Tea.teaType newType = Tea.stringToEnum(TeaTypes.SelectedItem.ToString());
+            Debug.Write("Tea type: " + newType);
             Tea newTea = new Tea(newType, "New Tea", "Instructions", "Notes");
+            dataHandler.AddData(newTea);
             //TeaList.Items.Add(newTea.name);
-            allTeas.AddTea(newTea);
-            TeaList.Items.Add(newTea.name);
+            //allTeas.AddTea(newTea);
+            TeaList.Items.Add(newTea);
             currentTeas.Add(newTea);
         }
 
@@ -213,6 +210,10 @@ namespace TeaJournal
          */
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (currentTea is not null)
+            {
+                SaveCurrentTea(currentTea);
+            }
             Debug.WriteLine("Form closing.");
         }
 

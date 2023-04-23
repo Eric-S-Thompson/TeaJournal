@@ -20,6 +20,13 @@
             <param name="id"> The ID of the database entry to find.</param>
             <returns></returns>
         </member>
+        <member name="M:TeaJournal.DatabaseManager`1.FindAllData(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Searches database using a query to find multiple entries.
+            </summary>
+            <param name="query"> <see cref="T:System.Linq.Expressions.Expression"/> to be used as a query on the database.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/> of found entries in the database.</returns>
+        </member>
         <member name="M:TeaJournal.DatabaseManager`1.InitializeDatabase(SQLite.SQLiteConnection,System.String,System.Type[])">
             <summary>
             Adds table(s) to a given database. Creates a new database if it does not exist already.

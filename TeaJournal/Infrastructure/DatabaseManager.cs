@@ -65,6 +65,21 @@ namespace TeaJournal
             return found;
         }
 
+        public void AddData(T item)
+        {
+            database.Insert(item);
+        }
+
+        public void UpdateData(T item)
+        {
+            database.Update(item);
+        }
+
+        public void DeleteData(T item)
+        {
+            database.Delete(item);
+        }
+
         /// <summary>
         /// Adds table(s) to a given database. Creates a new database if it does not exist already.
         /// </summary>
