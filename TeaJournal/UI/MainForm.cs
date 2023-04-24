@@ -84,6 +84,7 @@ namespace TeaJournal
         private void SaveCurrentTea(Tea tea)
         {
             Debug.WriteLine("Saving current tea");
+            Debug.WriteLine(currentTea.name);
             tea.name = TeaName.Text;
             tea.brewTime = TeaBrewTime.Value;
             tea.otherInstructions = TeaBrewNotes.Text;
@@ -127,9 +128,16 @@ namespace TeaJournal
         private void TeaList_SelectedIndexChanged(object sender, EventArgs e)
         {
             Debug.WriteLine("MainForm.cs : TeaList_SelectedIndexChanged");
+            if (TeaList.SelectedItem == currentTea)
+            {
+                Debug.WriteLine("Still the same item");
+                return;
+            }
             // User has selected a null space
+            // NOTE: Not called unless previously selected item is also null (it stays the same as the previous selection)
             if (TeaList.SelectedItem is null)
             {
+                Debug.WriteLine("Null selected");
                 ClearTea();
                 return;
             }
@@ -137,6 +145,7 @@ namespace TeaJournal
             if (currentTea is not null)
             {
                 int previousTeaIndex = TeaList.Items.IndexOf(currentTea);
+                Debug.WriteLine("Current tea index " + previousTeaIndex);
                 SaveCurrentTea(currentTea);
                 if(previousTeaIndex != -1) // If a different tea type was selected the index won't be valid
                 {
@@ -144,6 +153,7 @@ namespace TeaJournal
                 }
             }
             string item = TeaList.SelectedItem.ToString(); // Stores selected tea name
+            Debug.WriteLine("Item " + item);
             bool foundItem = false;
             // Search for the selected tea within the current tea type
             foreach (Tea t in currentTeas)
@@ -154,6 +164,7 @@ namespace TeaJournal
                     UpdateTea(t);
                 }
             }
+            Debug.WriteLine("Item found " + foundItem);
             // Item not found
             if (!foundItem)
             {
@@ -260,6 +271,27 @@ namespace TeaJournal
         {
             timerMin = Convert.ToInt32(numericUpDownMin.Value);
             timerSec = Convert.ToInt32(numericUpDownSec.Value);
+        }
+
+        private void buttonRemoveTea_Click(object sender, EventArgs e)
+        {
+            bool result = deleteDialogue();
+            if(result)
+            {
+                dataHandler.DeleteData(currentTea);
+                TeaList.Items.Remove(currentTea);
+                currentTea = null;
+                ClearTea();
+            }
+        }
+
+        private bool deleteDialogue()
+        {
+            if(currentTea is null)
+            {
+                return false;
+            }
+            return MessageBox.Show("Do you want to remove " + currentTea.name + "?", currentTea.name, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
     }
 }

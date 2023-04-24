@@ -48,6 +48,7 @@ namespace TeaJournal
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.buttonRemoveTea = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSec)).BeginInit();
@@ -56,6 +57,7 @@ namespace TeaJournal
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonRemoveTea);
             this.panel1.Controls.Add(this.addTea);
             this.panel1.Controls.Add(this.TeaBrewTime);
             this.panel1.Controls.Add(this.TeaBrewNotes);
@@ -252,6 +254,16 @@ namespace TeaJournal
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // buttonRemoveTea
+            // 
+            this.buttonRemoveTea.Location = new System.Drawing.Point(224, 40);
+            this.buttonRemoveTea.Name = "buttonRemoveTea";
+            this.buttonRemoveTea.Size = new System.Drawing.Size(94, 29);
+            this.buttonRemoveTea.TabIndex = 9;
+            this.buttonRemoveTea.Text = "Remove";
+            this.buttonRemoveTea.UseVisualStyleBackColor = true;
+            this.buttonRemoveTea.Click += new System.EventHandler(this.buttonRemoveTea_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -291,6 +303,7 @@ namespace TeaJournal
         private System.Windows.Forms.NumericUpDown numericUpDownMin;
         private System.Windows.Forms.NumericUpDown numericUpDownSec;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button buttonRemoveTea;
     }
 }
 
