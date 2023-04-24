@@ -24,6 +24,9 @@ namespace TeaJournal
         Infrastructure.TeaList allTeas;
         List<Tea> currentTeas;      // Stores all teas of currently selected type
         Tea currentTea;             // Currently selected tea
+
+        int timerSec;
+        int timerMin;
         public MainForm()
         {
             InitializeComponent();
@@ -220,6 +223,43 @@ namespace TeaJournal
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonTimerStart_Click(object sender, EventArgs e)
+        {
+            updateTimes();
+            timer.Start();
+        }
+
+        private void buttonTimerStop_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            updateTimes();
+            timerSec--;
+            if(timerSec < 0 && timerMin <= 0) // Timer has reached end
+            {
+                timer.Stop();
+                timerMin = 0;
+                timerSec = 0;
+                Debug.WriteLine("Timer has reached end");
+            }
+            else if(timerSec < 0) // Seconds have hit 0 and need to loop
+            {
+                timerMin--;
+                timerSec = Convert.ToInt32(numericUpDownSec.Maximum);
+            }
+            numericUpDownMin.Value = timerMin;
+            numericUpDownSec.Value = timerSec;
+        }
+
+        private void updateTimes()
+        {
+            timerMin = Convert.ToInt32(numericUpDownMin.Value);
+            timerSec = Convert.ToInt32(numericUpDownSec.Value);
         }
     }
 }
