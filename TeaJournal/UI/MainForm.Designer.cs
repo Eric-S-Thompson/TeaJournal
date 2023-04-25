@@ -140,6 +140,7 @@ namespace TeaJournal
             this.TeaBrewingName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(248)))));
             this.TeaBrewingName.Location = new System.Drawing.Point(610, 36);
             this.TeaBrewingName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.TeaBrewingName.Multiline = false;
             this.TeaBrewingName.Name = "TeaBrewingName";
             this.TeaBrewingName.Size = new System.Drawing.Size(166, 28);
             this.TeaBrewingName.TabIndex = 5;
@@ -153,6 +154,7 @@ namespace TeaJournal
             this.TeaName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(248)))));
             this.TeaName.Location = new System.Drawing.Point(446, 0);
             this.TeaName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.TeaName.Multiline = false;
             this.TeaName.Name = "TeaName";
             this.TeaName.Size = new System.Drawing.Size(330, 28);
             this.TeaName.TabIndex = 3;
