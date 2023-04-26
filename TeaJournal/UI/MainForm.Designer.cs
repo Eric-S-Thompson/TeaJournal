@@ -54,6 +54,7 @@ namespace TeaJournal
             this.label3 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.ListPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.NotePanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -62,6 +63,7 @@ namespace TeaJournal
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).BeginInit();
             this.ListPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // NotePanel
@@ -123,7 +125,7 @@ namespace TeaJournal
             this.TeaName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.TeaName.Multiline = false;
             this.TeaName.Name = "TeaName";
-            this.TeaName.Size = new System.Drawing.Size(188, 31);
+            this.TeaName.Size = new System.Drawing.Size(222, 31);
             this.TeaName.TabIndex = 3;
             this.TeaName.Text = "";
             this.TeaName.TextChanged += new System.EventHandler(this.TeaName_TextChanged);
@@ -135,10 +137,10 @@ namespace TeaJournal
             this.TeaBrewNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(137)))), ((int)(((byte)(104)))));
             this.TeaBrewNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TeaBrewNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(248)))));
-            this.TeaBrewNotes.Location = new System.Drawing.Point(196, 0);
+            this.TeaBrewNotes.Location = new System.Drawing.Point(226, 0);
             this.TeaBrewNotes.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.TeaBrewNotes.Name = "TeaBrewNotes";
-            this.TeaBrewNotes.Size = new System.Drawing.Size(351, 66);
+            this.TeaBrewNotes.Size = new System.Drawing.Size(321, 66);
             this.TeaBrewNotes.TabIndex = 6;
             this.TeaBrewNotes.Text = "";
             // 
@@ -154,7 +156,7 @@ namespace TeaJournal
             this.TeaBrewTime.MinDate = new System.DateTime(1753, 1, 2, 0, 0, 0, 0);
             this.TeaBrewTime.Name = "TeaBrewTime";
             this.TeaBrewTime.ShowUpDown = true;
-            this.TeaBrewTime.Size = new System.Drawing.Size(80, 27);
+            this.TeaBrewTime.Size = new System.Drawing.Size(66, 27);
             this.TeaBrewTime.TabIndex = 4;
             this.TeaBrewTime.TabStop = false;
             this.TeaBrewTime.Value = new System.DateTime(2000, 1, 1, 13, 0, 0, 0);
@@ -165,11 +167,11 @@ namespace TeaJournal
             this.TeaBrewingName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(137)))), ((int)(((byte)(104)))));
             this.TeaBrewingName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TeaBrewingName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(248)))));
-            this.TeaBrewingName.Location = new System.Drawing.Point(84, 39);
+            this.TeaBrewingName.Location = new System.Drawing.Point(70, 39);
             this.TeaBrewingName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.TeaBrewingName.Multiline = false;
             this.TeaBrewingName.Name = "TeaBrewingName";
-            this.TeaBrewingName.Size = new System.Drawing.Size(104, 27);
+            this.TeaBrewingName.Size = new System.Drawing.Size(152, 27);
             this.TeaBrewingName.TabIndex = 5;
             this.TeaBrewingName.Text = "";
             // 
@@ -181,10 +183,10 @@ namespace TeaJournal
             this.buttonRemoveTea.FlatAppearance.BorderSize = 0;
             this.buttonRemoveTea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoveTea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.buttonRemoveTea.Location = new System.Drawing.Point(114, 28);
+            this.buttonRemoveTea.Location = new System.Drawing.Point(123, 30);
             this.buttonRemoveTea.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.buttonRemoveTea.Name = "buttonRemoveTea";
-            this.buttonRemoveTea.Size = new System.Drawing.Size(115, 44);
+            this.buttonRemoveTea.Size = new System.Drawing.Size(110, 36);
             this.buttonRemoveTea.TabIndex = 9;
             this.buttonRemoveTea.Text = "Remove";
             this.buttonRemoveTea.UseVisualStyleBackColor = false;
@@ -198,10 +200,10 @@ namespace TeaJournal
             this.addTea.FlatAppearance.BorderSize = 0;
             this.addTea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.addTea.Location = new System.Drawing.Point(0, 28);
+            this.addTea.Location = new System.Drawing.Point(1, 30);
             this.addTea.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.addTea.Name = "addTea";
-            this.addTea.Size = new System.Drawing.Size(115, 44);
+            this.addTea.Size = new System.Drawing.Size(115, 36);
             this.addTea.TabIndex = 8;
             this.addTea.Text = "Add";
             this.addTea.UseVisualStyleBackColor = false;
@@ -221,10 +223,10 @@ namespace TeaJournal
             "Black",
             "Herbal",
             "Other"});
-            this.TeaTypes.Location = new System.Drawing.Point(-1, 0);
+            this.TeaTypes.Location = new System.Drawing.Point(1, 1);
             this.TeaTypes.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.TeaTypes.Name = "TeaTypes";
-            this.TeaTypes.Size = new System.Drawing.Size(230, 28);
+            this.TeaTypes.Size = new System.Drawing.Size(232, 28);
             this.TeaTypes.TabIndex = 2;
             this.TeaTypes.SelectedIndexChanged += new System.EventHandler(this.TeaType_Changed);
             // 
@@ -232,14 +234,15 @@ namespace TeaJournal
             // 
             this.TeaList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(111)))), ((int)(((byte)(90)))));
             this.TeaList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TeaList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TeaList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeaList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(248)))));
             this.TeaList.FormattingEnabled = true;
+            this.TeaList.IntegralHeight = false;
             this.TeaList.ItemHeight = 20;
-            this.TeaList.Location = new System.Drawing.Point(0, 74);
+            this.TeaList.Location = new System.Drawing.Point(0, 67);
             this.TeaList.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.TeaList.Name = "TeaList";
-            this.TeaList.Size = new System.Drawing.Size(230, 360);
+            this.TeaList.Size = new System.Drawing.Size(230, 367);
             this.TeaList.TabIndex = 1;
             this.TeaList.SelectedIndexChanged += new System.EventHandler(this.TeaList_SelectedIndexChanged);
             // 
@@ -389,14 +392,23 @@ namespace TeaJournal
             this.ListPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ListPanel.AutoSize = true;
-            this.ListPanel.Controls.Add(this.buttonRemoveTea);
-            this.ListPanel.Controls.Add(this.addTea);
             this.ListPanel.Controls.Add(this.TeaList);
-            this.ListPanel.Controls.Add(this.TeaTypes);
+            this.ListPanel.Controls.Add(this.panel5);
             this.ListPanel.Location = new System.Drawing.Point(12, 12);
             this.ListPanel.Name = "ListPanel";
             this.ListPanel.Size = new System.Drawing.Size(230, 434);
             this.ListPanel.TabIndex = 2;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.buttonRemoveTea);
+            this.panel5.Controls.Add(this.TeaTypes);
+            this.panel5.Controls.Add(this.addTea);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(230, 67);
+            this.panel5.TabIndex = 10;
             // 
             // MainForm
             // 
@@ -421,6 +433,7 @@ namespace TeaJournal
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).EndInit();
             this.ListPanel.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,6 +464,7 @@ namespace TeaJournal
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 
